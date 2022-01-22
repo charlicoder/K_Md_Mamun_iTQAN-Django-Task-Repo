@@ -1,0 +1,31 @@
+{% extends 'products/home.html' %}
+
+{% block content %}
+
+    <div class="container m-5">
+        <div class="row m-5">
+            <div class="col-md-6 offset-3">
+                {% include 'products/partials/category-slide.html' %}
+            </div>
+        </div>
+
+        <div class="row m-5"></div>
+        
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div class="card" style="width: 18rem;">
+                    {% if object.image %}
+                    <img src="{{ object.image.url }}" class="card-img-top" alt="...">
+                    {% endif %}
+                  <div class="card-body">
+                    <p class="card-text">{{ object.name }}</p>
+                  </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </div>
+    
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    <div class="container">
+        <div class="row">
+            <h1>Categories</h1>
+            {% for category in object_list %}
+                <div class="col-md-3">
+                    <div class="card">
+                        {% if category.image %}
+                        <img src="{{ category.image.url }}" class="card-img-top" alt="...">
+                        {% endif %}
+                        <div class="card-footer">
+                            <a href="{% url 'products:category_products' id=category.pk %}">
+                                <h3 class="card-title text-center">{{ category.title }}</h3>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+{% endblock content %}

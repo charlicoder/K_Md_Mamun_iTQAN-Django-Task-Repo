@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+    {% block page_style %}
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% endblock page_style %}
+
+
+{% block base %}
+    
+    {% block header %}
+        {% include 'includes/header.html' %}
+    {% endblock header %}
+    {% block content %}
+        <h1>Hello</h1>
+    {% endblock content %}
+    
+
+{% endblock base %}
+
+{% block pagejs %}
+{% endblock pagejs %}

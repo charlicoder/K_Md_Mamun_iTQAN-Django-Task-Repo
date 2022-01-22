@@ -1,0 +1,24 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block page_style %}
+    <link href="{% static 'css/signup.css' %}" rel="stylesheet">
+{% endblock page_style %}
+
+{% block base %}
+<main class="card form-signin">
+    <div class="card-body">
+        <form method="post" action="{% url 'users:signup' %}">
+            {% csrf_token %}
+    
+            <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+            <div class="form-floating">
+                {{ form.as_p }}
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+        
+        </form>
+    </div>
+</main>
+{% endblock base %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+        {% block page_style %}
+        {% endblock page_style %}
+
+        <title>iTQAN Task {{title}}</title>
+    </head>
+    <body class="bg-secondary">
+        {% block base %}
+        {% endblock base %}
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="{% static 'dist/js/bootstrap.bundle.min.js' %}"></script>
+
+    {% block pagejs %}
+    {% endblock pagejs %}
+    </body>
+    {% if not request.user.is_authenticated %}
+        {% include 'includes/login-modal.html' %}
+    {% endif %}
+</html>
