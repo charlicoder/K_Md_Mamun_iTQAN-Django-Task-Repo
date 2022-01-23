@@ -16,6 +16,7 @@ class Product(models.Model):
 	name = models.CharField(max_length=50, blank=False, null=False)
 	image = models.ImageField(upload_to='products', blank=True, null=True)
 	category = models.ForeignKey(Category, on_delete=models.CASCADE)
+	view_count = models.PositiveIntegerField(default=0)
 
 
 	def __str__(self):

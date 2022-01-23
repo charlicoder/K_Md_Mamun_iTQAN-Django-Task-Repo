@@ -46,6 +46,8 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
 	def get_object(self):
 		pk = self.kwargs.get('id')
 		obj = Product.objects.get(id=pk)
+		obj.view_count = obj.view_count + 1
+		
 		return obj
 
 
