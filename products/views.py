@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from hitcount.views import HitCountDetailView
 
 from .models import Category, Product
 
@@ -31,9 +32,10 @@ class ProductListView(LoginRequiredMixin, ListView):
 
 
 
-class ProductDetailView(LoginRequiredMixin, DetailView):
+class ProductDetailView(HitCountDetailView):
 	template_name = 'products/product_detail.html'
 	model = Product
+	count_hit = True
 
 	def get_context_data(self, **kwargs):
 		# import pdb; pdb.set_trace();
@@ -46,8 +48,6 @@ class ProductDetailView(LoginRequiredMixin, DetailView):
 	def get_object(self):
 		pk = self.kwargs.get('id')
 		obj = Product.objects.get(id=pk)
-		obj.view_count = obj.view_count + 1
-		obj.save()
 		return obj
 
 
